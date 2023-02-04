@@ -21,9 +21,7 @@ const Footer: FC<FooterProps> = (props: FooterProps) => {
     <div className="w-full  xs:h-full lg:h-[464px] bg-black pt-20 xs:px-4 md:px-24">
       <div className="flex xs:flex-col md:flex-row md:flex-wrap lg:flex-nowrap">
         {/* About section */}
-        <div
-          className={classNames(commonClassNames, " xs:w-full lg:w-[312px]")}
-        >
+        <div className={classNames(commonClassNames, " xs:w-full lg:w-80")}>
           <h4 className="text-white">ABOUT</h4>
           <h6
             className={classNames(
