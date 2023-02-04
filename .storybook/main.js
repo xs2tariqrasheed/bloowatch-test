@@ -1,3 +1,4 @@
+import "../styles/globals.css";
 module.exports = {
   stories: [
     "../stories/**/*.stories.mdx",
