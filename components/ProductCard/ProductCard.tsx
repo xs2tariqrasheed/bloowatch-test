@@ -21,18 +21,18 @@ const ProductCard: FC<ProductCardProps> = (props: ProductCardProps) => {
     <div
       className={classNames(
         commonClassNames,
-        "pt-20 pb-6 xs:w-full md:w-[322px] text-center"
+        "pt-20 pb-6 xs:w-full md:w-80 text-center"
       )}
     >
       <div
         onMouseOver={() => setHover(true)}
         onMouseOut={() => setHover(false)}
         className={classNames(
-          "relative flex w-full bg-light-gray h-[380px] items-center justify-center"
+          "relative flex w-full bg-light-gray h-96 items-center justify-center"
         )}
       >
         {props.isSaleItem && (
-          <div className="absolute rounded-full left-4 -top-10 flex justify-center items-center h-[70px] w-[70px] bg-primary-blue">
+          <div className="absolute rounded-full left-4 -top-10 flex justify-center items-center h-16 w-16 bg-primary-blue">
             <h2 className="text-white">Sale</h2>
           </div>
         )}
@@ -55,11 +55,11 @@ const ProductCard: FC<ProductCardProps> = (props: ProductCardProps) => {
         <h3 className="mt-6">{props.name}</h3>
         <h4 className="text-primary-blue mt-4">{props.description}</h4>
         <div className="flex">
-          <div className="mt-6 w-[90px]">
+          <div className="mt-6 w-24">
             <PriceTag>{props.totalPrice}</PriceTag>
           </div>
           {props.discountPrice && (
-            <div className="mt-6 w-[90px]">
+            <div className="mt-6 w-24	">
               <PriceTag lineThrough={true}>{props.discountPrice}</PriceTag>
             </div>
           )}
