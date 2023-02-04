@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Button from "../Button";
 
@@ -15,7 +15,7 @@ interface NavbarProps {
   links: Link[];
 }
 
-const Navbar = ({ links }: NavbarProps) => {
+const Navbar: FC<NavbarProps> = ({ links }: NavbarProps) => {
   const [nav, setNav] = useState(false);
   const handleNav = () => {
     setNav(!nav);
@@ -26,11 +26,11 @@ const Navbar = ({ links }: NavbarProps) => {
     <div className="w-full">
       <nav className={classNames(commonClassNames)}>
         {/* <Image
-              src="/images/logo.png"
-              alt="logo"
-              width="219"
-              height="41"
-              className="cursor-pointer"
+          src="/images/logo.png"
+          alt="logo"
+          width="219"
+          height="41"
+          className="cursor-pointer"
         /> */}
         <img src={Logo} width="219px" height="41px" />
         <ul className="hidden md:flex">

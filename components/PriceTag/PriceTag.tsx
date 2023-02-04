@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { FC } from "react";
 import { ReactNode } from "react";
 
 interface PriceTagProps {
@@ -7,7 +7,10 @@ interface PriceTagProps {
   lineThrough?: boolean;
 }
 
-const PriceTag = ({ children, lineThrough }: PriceTagProps) => {
+const PriceTag: FC<PriceTagProps> = ({
+  children,
+  lineThrough,
+}: PriceTagProps) => {
   return (
     <div
       className={classNames(
