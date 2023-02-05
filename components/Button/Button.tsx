@@ -45,7 +45,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const commonClassNames =
       "flex cursor-pointer items-center text-center font-normal ";
     const disabledClassNames = props.disable && "cursor-not-allowed opacity-50";
-    const linkButtonClassNames = `text-sm leading-6 '
+    const linkButtonClassNames = `text-sm font-medium	 leading-6 '
     }`;
     const buttonClassNames =
       "w-full h-[53px] bg-primary-blue flex-grow justify-center py-3 whitespace-nowrap text-white leading-5";

@@ -1,58 +1,152 @@
 import classNames from "classnames";
-import React from "react";
-import { ReactNode } from "react";
-
+import Image from "next/image";
+import React, { FC, useState } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Button from "../Button";
 
+import Logo from "./images/logo.png";
+import CartIcon from "./images/Cart";
+
+export interface Link {
+  title: string;
+  onClick: () => {} | void;
+}
 interface NavbarProps {
-  children?: ReactNode;
-  lineThrough?: boolean;
+  links: Link[];
 }
 
-const Navbar = ({ children, lineThrough }: NavbarProps) => {
+const Navbar: FC<NavbarProps> = ({ links }: NavbarProps) => {
+  const [nav, setNav] = useState(false);
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
+  const commonClassNames = "flex justify-between items-center";
   return (
-    <nav className="flex w-full items-center justify-between">
-      <div className="w-[100px] h-[25px] bg-primary-blue"></div>
-      <ul className="flex items-center">
-        {[
-          {
-            title: "SHOP",
-            onclick: () => {},
-          },
-          {
-            title: "BLOG",
-            onclick: () => {},
-          },
-          {
-            title: "SEARCH",
-            onclick: () => {},
-          },
-          {
-            title: "CART",
-            marginRight: false,
-            onclick: () => {},
-          },
-        ].map((item) => (
-          <li
-            key={item.title}
-            className={classNames(item.marginRight !== false && "mr-[158px]")}
-          >
-            <Button
-              onClick={item.onclick}
-              type="link"
-              textColor="black"
-              fontSize={18}
+    <div className="w-full">
+      <nav className={classNames(commonClassNames)}>
+        {/* <Image
+          src="/images/logo.png"
+          alt="logo"
+          width="219"
+          height="41"
+          className="cursor-pointer"
+        /> */}
+        <img src={Logo} width="219px" height="41px" />
+        <ul className="hidden md:flex">
+          {links.map((item, i) => (
+            <li
+              key={item.title}
+              className={classNames(i != links.length - 1 && "mr-20")}
             >
-              {item.title}
-            </Button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+              {i === 3 ? (
+                <div className="flex items-center">
+                  <CartIcon />
+                  <div className="ml-1">
+                    <Button
+                      onClick={item.onClick}
+                      type="link"
+                      textColor="black"
+                      fontSize={18}
+                    >
+                      {item.title}
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <Button
+                  onClick={item.onClick}
+                  type="link"
+                  textColor="black"
+                  fontSize={18}
+                >
+                  {item.title}
+                </Button>
+              )}
+            </li>
+          ))}
+        </ul>
+        {/* Hamburger Icon */}
+        <div onClick={handleNav} className="md:hidden">
+          <AiOutlineMenu size={25} />
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+
+      {/* Overlay */}
+      <div
+        className={
+          nav ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70" : ""
+        }
+      >
+        {/* Side Drawer Menu */}
+        <div
+          className={classNames(
+            nav
+              ? " fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500"
+              : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
+          )}
+        >
+          <div>
+            <div className={classNames(commonClassNames, "w-full")}>
+              {/* <Image
+                  src="/images/logo.png"
+                  alt="logo"
+                  width="219"
+                  height="41"
+                  className="cursor-pointer"
+        /> */}
+              <img src={Logo} width="119px" height="41px" />
+              <div
+                onClick={handleNav}
+                className="rounded ml-4 shadow-lg px-3 pt-1 cursor-pointer"
+              >
+                <AiOutlineClose />
+              </div>
+            </div>
+          </div>
+          <div className="py-4 flex flex-col">
+            <ul className="uppercase">
+              {links.map((item, i) => (
+                <li key={item.title} className="py-4 text-sm">
+                  {i === 3 ? (
+                    <div className="flex items-center">
+                      <CartIcon />
+                      <div className="ml-1">
+                        <Button
+                          onClick={() => {
+                            item.onClick, setNav(false);
+                          }}
+                          type="link"
+                          textColor="black"
+                          fontSize={18}
+                        >
+                          {item.title}
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={() => {
+                        item.onClick, setNav(false);
+                      }}
+                      type="link"
+                      textColor="black"
+                      fontSize={18}
+                    >
+                      {item.title}
+                    </Button>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-Navbar.defaultProps = {
-  lineThrough: false,
-};
+Navbar.defaultProps = {};
 export default Navbar;
