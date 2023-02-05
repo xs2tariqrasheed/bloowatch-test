@@ -1,9 +1,8 @@
 import classNames from "classnames";
+import Image from "next/image";
 import React, { FC, useState } from "react";
 import Button from "../Button";
 import PriceTag from "../PriceTag";
-
-import Product1 from "./images/1.png";
 
 interface ProductCardProps {
   productImage: string;
@@ -32,23 +31,21 @@ const ProductCard: FC<ProductCardProps> = (props: ProductCardProps) => {
         )}
       >
         {props.isSaleItem && (
-          <div className="absolute rounded-full left-4 -top-10 flex justify-center items-center h-16 w-16 bg-primary-blue">
+          <div className="absolute rounded-full left-2 -top-10 flex justify-center items-center h-16 w-16 bg-primary-blue">
             <h2 className="text-white">Sale</h2>
           </div>
         )}
-        {/* <Image
-              src="/images/logo.png"
-              alt="logo"
-              width="219"
-              height="41"
-              className="cursor-pointer"
-        /> */}
+
         {hover && (
           <div className="flex w-full z-10 absolute bottom-0">
             <Button type="default">ADD TO CART</Button>
           </div>
         )}
-        <img className="absolute bottom-4" src={Product1} />
+        <Image
+          src={props.productImage}
+          alt="image"
+          className="absolute bottom-4 cursor-pointer"
+        />
       </div>
 
       <div className={classNames(commonClassNames)}>

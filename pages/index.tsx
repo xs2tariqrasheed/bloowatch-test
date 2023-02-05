@@ -1,3 +1,10 @@
+import Main from "@/components/Main";
+import Head from "next/head";
+
 export default function Home() {
-  return <p className="text-xl text-rose-500">Hi there</p>;
+  return (
+    <div className="bg-white">
+      <Main />
+    </div>
+  );
 }

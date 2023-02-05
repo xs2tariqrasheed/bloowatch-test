@@ -22,7 +22,9 @@ const Input = ({
   return (
     <div>
       {label ? (
-        <label className="block text-lg uppercase mb-2">{label}</label>
+        <label className="block text-lg font-normal uppercase mb-2">
+          {label}
+        </label>
       ) : null}
       <input
         placeholder={placeholder}
@@ -30,7 +32,7 @@ const Input = ({
         name={name}
         onChange={onChange}
         className={classNames(
-          "block w-full px-4 py-5 text-sm bg-off-white",
+          "block w-full px-4 py-5 text-sm bg-light-gray",
           className
         )}
       />
