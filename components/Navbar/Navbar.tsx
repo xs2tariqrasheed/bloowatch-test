@@ -2,9 +2,10 @@ import classNames from "classnames";
 import Image from "next/image";
 import React, { FC, useState } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+
 import Button from "../Button";
 
-import Logo from "./images/logo.png";
+import Logo from "../../public/assets/logo.png";
 import CartIcon from "./images/Cart";
 
 export interface Link {
@@ -25,14 +26,13 @@ const Navbar: FC<NavbarProps> = ({ links }: NavbarProps) => {
   return (
     <div className="w-full">
       <nav className={classNames(commonClassNames)}>
-        {/* <Image
-          src="/images/logo.png"
+        <Image
+          src={Logo}
           alt="logo"
-          width="219"
-          height="41"
+          width={219}
+          height={41}
           className="cursor-pointer"
-        /> */}
-        <img src={Logo} width="219px" height="41px" />
+        />
         <ul className="hidden md:flex">
           {links.map((item, i) => (
             <li
@@ -90,14 +90,13 @@ const Navbar: FC<NavbarProps> = ({ links }: NavbarProps) => {
         >
           <div>
             <div className={classNames(commonClassNames, "w-full")}>
-              {/* <Image
-                  src="/images/logo.png"
-                  alt="logo"
-                  width="219"
-                  height="41"
-                  className="cursor-pointer"
-        /> */}
-              <img src={Logo} width="119px" height="41px" />
+              <Image
+                src={Logo}
+                alt="logo"
+                width="219"
+                height="41"
+                className="cursor-pointer"
+              />
               <div
                 onClick={handleNav}
                 className="rounded ml-4 shadow-lg px-3 pt-1 cursor-pointer"

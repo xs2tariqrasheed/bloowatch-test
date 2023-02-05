@@ -1,3 +1,3 @@
-import PriceTag from './Input';
+import Input from "./Input";
 
-export default PriceTag;
+export default Input;
